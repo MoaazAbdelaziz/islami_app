@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:islami_app/home/home_screen.dart';
+import 'package:islami_app/home/quran/sura_details_screen.dart';
 import 'package:islami_app/my_theme.dart';
 
 Future main() async {
@@ -22,6 +23,7 @@ class IslamiApp extends StatelessWidget {
       theme: MyTheme.lightTheme,
       routes: {
         HomeScreen.routrName: (context) => const HomeScreen(),
+        SuraDetailsScreen.routeName: (context) => const SuraDetailsScreen(),
       },
       initialRoute: HomeScreen.routrName,
     );
