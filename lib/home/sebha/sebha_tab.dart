@@ -17,7 +17,7 @@ class _SebhaTabState extends State<SebhaTab>
     'الله اكبر',
   ];
 
-  String tasbehContent = '';
+  String tasbehContent = 'سبحان الله';
   int index = 0;
 
   late Animation<double> animation;
