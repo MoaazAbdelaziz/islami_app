@@ -4,11 +4,12 @@ import 'package:islami_app/home/hadeth/hadeth_details_screen.dart';
 import 'package:islami_app/home/home_screen.dart';
 import 'package:islami_app/home/quran/sura_details_screen.dart';
 import 'package:islami_app/my_theme.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  await Future.delayed(const Duration(seconds: 10));
+  await Future.delayed(const Duration(seconds: 3));
   FlutterNativeSplash.remove();
 
   runApp(const IslamiApp());
@@ -21,6 +22,8 @@ class IslamiApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      localizationsDelegates: AppLocalizations.localizationsDelegates,
+      supportedLocales: AppLocalizations.supportedLocales,
       theme: MyTheme.lightTheme,
       routes: {
         HomeScreen.routrName: (context) => const HomeScreen(),

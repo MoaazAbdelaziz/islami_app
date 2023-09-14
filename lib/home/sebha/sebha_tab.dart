@@ -1,6 +1,7 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:islami_app/home/sebha/custom_container.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SebhaTab extends StatefulWidget {
   const SebhaTab({super.key});
@@ -73,7 +74,7 @@ class _SebhaTabState extends State<SebhaTab>
             ),
           ),
           Text(
-            'Number of tasbeh',
+            AppLocalizations.of(context)!.tasbeh_number,
             style: Theme.of(context).textTheme.titleMedium,
           ),
           CustomContainer(
