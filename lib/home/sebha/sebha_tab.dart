@@ -46,30 +46,30 @@ class _SebhaTabState extends State<SebhaTab>
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          AnimatedBuilder(
-            animation: animation,
-            builder: (context, _) => Transform.rotate(
-              angle: animation.value,
-              child: InkWell(
-                onTap: () {
-                  controller.forward(from: 0);
-                  setState(() {
-                    tasbehLogic();
-                  });
-                },
-                child: Stack(
-                  clipBehavior: Clip.none,
-                  alignment: Alignment.topCenter,
-                  children: [
-                    Positioned(
-                      top: -75,
-                      left: 100,
-                      child: Image.asset('assets/images/seb7a_head.png'),
-                    ),
-                    Image.asset('assets/images/seb7a_body.png'),
-                  ],
+          InkWell(
+            onTap: () {
+              controller.forward(from: 0);
+              setState(() {
+                tasbehLogic();
+              });
+            },
+            child: Stack(
+              clipBehavior: Clip.none,
+              alignment: Alignment.topCenter,
+              children: [
+                Positioned(
+                  top: -75,
+                  left: 100,
+                  child: Image.asset('assets/images/seb7a_head.png'),
                 ),
-              ),
+                AnimatedBuilder(
+                  animation: animation,
+                  builder: (BuildContext context, _) => Transform.rotate(
+                    angle: animation.value,
+                    child: Image.asset('assets/images/seb7a_body.png'),
+                  ),
+                ),
+              ],
             ),
           ),
           Text(
