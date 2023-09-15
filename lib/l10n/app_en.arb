@@ -4,8 +4,14 @@
     "hadeth" : "Hadeth",
     "radio" : "Radio",
     "sebha" : "Sebha",
+    "settings" : "Settings",
+    "language" : "Language",
+    "arabic" : "Arabic",
+    "english" : "English",
+    "theme" : "Theme",
+    "light" : "Light",
+    "dark" : "Dark",
     "tasbeh_number" : "Number of Tasbeh",
-
     "sura_name" : "Sura Name",
     "hadeth_name" : "Hadeth Name"
 }
