@@ -4,6 +4,9 @@ import 'package:islami_app/home/quran/quran_tab.dart';
 import 'package:islami_app/home/radio/radio_tab.dart';
 import 'package:islami_app/home/sebha/sebha_tab.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:islami_app/home/settings/settings_tab.dart';
+import 'package:islami_app/providers/app_config_provider.dart';
+import 'package:provider/provider.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -18,10 +21,14 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    var provider = Provider.of<AppConfigProvider>(context);
+
     return Stack(
       children: [
         Image.asset(
-          'assets/images/home_background.png',
+          provider.appTheme == ThemeMode.light
+              ? 'assets/images/home_background.png'
+              : 'assets/images/home_background_dark.png',
           width: double.infinity,
           height: double.infinity,
           fit: BoxFit.fill,
@@ -69,6 +76,10 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                   label: AppLocalizations.of(context)!.radio,
                 ),
+                BottomNavigationBarItem(
+                  icon: const Icon(Icons.settings),
+                  label: AppLocalizations.of(context)!.settings,
+                ),
               ],
             ),
           ),
@@ -83,5 +94,6 @@ class _HomeScreenState extends State<HomeScreen> {
     HadethTab(),
     SebhaTab(),
     RadioTab(),
+    SettingsTab()
   ];
 }

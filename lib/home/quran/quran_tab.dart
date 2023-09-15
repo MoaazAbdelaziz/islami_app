@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:islami_app/home/quran/sura_name_item.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:islami_app/my_theme.dart';
+import 'package:islami_app/providers/app_config_provider.dart';
+import 'package:provider/provider.dart';
 
 class QuranTab extends StatelessWidget {
   const QuranTab({super.key});
@@ -123,6 +126,7 @@ class QuranTab extends StatelessWidget {
       "الفلق",
       "الناس"
     ];
+    var provider = Provider.of<AppConfigProvider>(context);
 
     return Center(
       child: Column(
@@ -132,7 +136,9 @@ class QuranTab extends StatelessWidget {
             child: Image.asset('assets/images/quran_logo.png'),
           ),
           Divider(
-            color: Theme.of(context).primaryColor,
+            color: provider.appTheme == ThemeMode.light
+                ? Theme.of(context).primaryColor
+                : MyTheme.yellowColor,
             thickness: 3,
           ),
           Text(
@@ -140,7 +146,9 @@ class QuranTab extends StatelessWidget {
             style: Theme.of(context).textTheme.titleMedium,
           ),
           Divider(
-            color: Theme.of(context).primaryColor,
+            color: provider.appTheme == ThemeMode.light
+                ? Theme.of(context).primaryColor
+                : MyTheme.yellowColor,
             thickness: 3,
           ),
           Expanded(
@@ -148,7 +156,9 @@ class QuranTab extends StatelessWidget {
             child: ListView.separated(
               separatorBuilder: (context, index) {
                 return Divider(
-                  color: Theme.of(context).primaryColor,
+                  color: provider.appTheme == ThemeMode.light
+                      ? Theme.of(context).primaryColor
+                      : MyTheme.yellowColor,
                   thickness: 2,
                 );
               },
