@@ -42,7 +42,9 @@ class _HadethDetailsScreenState extends State<HadethDetailsScreen> {
               vertical: MediaQuery.of(context).size.height * 0.08,
             ),
             decoration: BoxDecoration(
-              color: MyTheme.whiteColor,
+              color: provider.appTheme == ThemeMode.light
+                  ? MyTheme.whiteColor
+                  : MyTheme.primaryDark,
               borderRadius: BorderRadius.circular(25),
             ),
             child: ListView.builder(

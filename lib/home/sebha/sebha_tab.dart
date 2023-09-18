@@ -2,6 +2,9 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:islami_app/home/sebha/custom_container.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:islami_app/my_theme.dart';
+import 'package:islami_app/providers/app_config_provider.dart';
+import 'package:provider/provider.dart';
 
 class SebhaTab extends StatefulWidget {
   const SebhaTab({super.key});
@@ -43,6 +46,8 @@ class _SebhaTabState extends State<SebhaTab>
 
   @override
   Widget build(BuildContext context) {
+    var provider = Provider.of<AppConfigProvider>(context);
+
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -61,13 +66,21 @@ class _SebhaTabState extends State<SebhaTab>
                 Positioned(
                   top: -75,
                   left: 100,
-                  child: Image.asset('assets/images/seb7a_head.png'),
+                  child: Image.asset(
+                    provider.appTheme == ThemeMode.light
+                        ? 'assets/images/seb7a_head.png'
+                        : 'assets/images/seb7a_head_dark.png',
+                  ),
                 ),
                 AnimatedBuilder(
                   animation: animation,
                   builder: (BuildContext context, _) => Transform.rotate(
                     angle: animation.value,
-                    child: Image.asset('assets/images/seb7a_body.png'),
+                    child: Image.asset(
+                      provider.appTheme == ThemeMode.light
+                          ? 'assets/images/seb7a_body.png'
+                          : 'assets/images/seb7a_body_dark.png',
+                    ),
                   ),
                 ),
               ],
@@ -81,11 +94,29 @@ class _SebhaTabState extends State<SebhaTab>
             text: '$tasbehNumber',
             width: 70,
             height: 80,
+            color: provider.appTheme == ThemeMode.light
+                ? MyTheme.primaryLight
+                : MyTheme.primaryDark,
+            style: provider.appTheme == ThemeMode.dark
+                ? Theme.of(context)
+                    .textTheme
+                    .titleSmall!
+                    .copyWith(color: MyTheme.whiteColor)
+                : Theme.of(context).textTheme.titleSmall,
           ),
           CustomContainer(
             text: tasbehContent,
             width: 137,
             height: 50,
+            color: provider.appTheme == ThemeMode.light
+                ? MyTheme.primaryLight
+                : MyTheme.yellowColor,
+            style: provider.appTheme == ThemeMode.dark
+                ? Theme.of(context)
+                    .textTheme
+                    .titleSmall!
+                    .copyWith(color: MyTheme.blackColor)
+                : Theme.of(context).textTheme.titleSmall,
           ),
         ],
       ),

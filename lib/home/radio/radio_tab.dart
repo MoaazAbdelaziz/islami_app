@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:islami_app/my_theme.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:islami_app/providers/app_config_provider.dart';
+import 'package:provider/provider.dart';
 
 class RadioTab extends StatelessWidget {
   const RadioTab({super.key});
 
   @override
   Widget build(BuildContext context) {
+    var provider = Provider.of<AppConfigProvider>(context);
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -21,15 +24,21 @@ class RadioTab extends StatelessWidget {
             children: [
               ImageIcon(
                 const AssetImage('assets/images/Icon metro-reverse.png'),
-                color: MyTheme.primaryLight,
+                color: provider.appTheme == ThemeMode.light
+                    ? MyTheme.primaryLight
+                    : MyTheme.yellowColor,
               ),
               ImageIcon(
                 const AssetImage('assets/images/Icon awesome-play.png'),
-                color: MyTheme.primaryLight,
+                color: provider.appTheme == ThemeMode.light
+                    ? MyTheme.primaryLight
+                    : MyTheme.yellowColor,
               ),
               ImageIcon(
                 const AssetImage('assets/images/Icon metro-next.png'),
-                color: MyTheme.primaryLight,
+                color: provider.appTheme == ThemeMode.light
+                    ? MyTheme.primaryLight
+                    : MyTheme.yellowColor,
               ),
             ],
           ),

@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:islami_app/home/hadeth/hadeth_name_item.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:islami_app/my_theme.dart';
+import 'package:islami_app/providers/app_config_provider.dart';
+import 'package:provider/provider.dart';
 
 class HadethTab extends StatefulWidget {
   const HadethTab({super.key});
@@ -15,6 +18,7 @@ class _HadethTabState extends State<HadethTab> {
 
   @override
   Widget build(BuildContext context) {
+    var provider = Provider.of<AppConfigProvider>(context);
     if (hadeths.isEmpty) {
       loadHadethFile();
     }
@@ -24,7 +28,9 @@ class _HadethTabState extends State<HadethTab> {
         children: [
           Image.asset('assets/images/hadeth_image.png'),
           Divider(
-            color: Theme.of(context).primaryColor,
+            color: provider.appTheme == ThemeMode.light
+                ? Theme.of(context).primaryColor
+                : MyTheme.yellowColor,
             thickness: 3,
           ),
           Text(
@@ -32,7 +38,9 @@ class _HadethTabState extends State<HadethTab> {
             style: Theme.of(context).textTheme.titleMedium,
           ),
           Divider(
-            color: Theme.of(context).primaryColor,
+            color: provider.appTheme == ThemeMode.light
+                ? Theme.of(context).primaryColor
+                : MyTheme.yellowColor,
             thickness: 3,
           ),
           hadeths.isEmpty
@@ -42,7 +50,9 @@ class _HadethTabState extends State<HadethTab> {
                   child: ListView.separated(
                     separatorBuilder: (context, index) {
                       return Divider(
-                        color: Theme.of(context).primaryColor,
+                        color: provider.appTheme == ThemeMode.light
+                            ? Theme.of(context).primaryColor
+                            : MyTheme.yellowColor,
                         thickness: 2,
                       );
                     },

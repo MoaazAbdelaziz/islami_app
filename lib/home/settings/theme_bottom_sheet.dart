@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:islami_app/my_theme.dart';
 import 'package:islami_app/providers/app_config_provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
@@ -39,6 +40,8 @@ class _ThemeBottomSheetState extends State<ThemeBottomSheet> {
   }
 
   Widget getSelectedItemWidget(String language) {
+    var provider = Provider.of<AppConfigProvider>(context);
+
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Row(
@@ -46,10 +49,11 @@ class _ThemeBottomSheetState extends State<ThemeBottomSheet> {
         children: [
           Text(
             language,
-            style: Theme.of(context)
-                .textTheme
-                .titleMedium!
-                .copyWith(color: Theme.of(context).primaryColor),
+            style: provider.appTheme == ThemeMode.light
+                ? Theme.of(context).textTheme.titleMedium
+                : Theme.of(context).textTheme.titleMedium!.copyWith(
+                      color: MyTheme.blackColor,
+                    ),
           ),
           Icon(
             Icons.check,
@@ -62,13 +66,19 @@ class _ThemeBottomSheetState extends State<ThemeBottomSheet> {
   }
 
   Widget getUnselectedLanguageItem(String language) {
+    var provider = Provider.of<AppConfigProvider>(context);
+
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Row(
         children: [
           Text(
             language,
-            style: Theme.of(context).textTheme.titleMedium,
+            style: provider.appTheme == ThemeMode.light
+                ? Theme.of(context).textTheme.titleMedium
+                : Theme.of(context).textTheme.titleMedium!.copyWith(
+                      color: MyTheme.blackColor,
+                    ),
           ),
         ],
       ),

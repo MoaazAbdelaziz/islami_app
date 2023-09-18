@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:islami_app/my_theme.dart';
 
 class CustomContainer extends StatelessWidget {
   const CustomContainer({
@@ -7,10 +6,14 @@ class CustomContainer extends StatelessWidget {
     required this.text,
     this.width,
     this.height,
+    required this.color,
+    this.style,
   });
   final String text;
   final double? width;
   final double? height;
+  final Color color;
+  final TextStyle? style;
 
   @override
   Widget build(BuildContext context) {
@@ -18,13 +21,13 @@ class CustomContainer extends StatelessWidget {
       width: width,
       height: height,
       decoration: BoxDecoration(
-        color: MyTheme.primaryLight,
+        color: color,
         borderRadius: BorderRadius.circular(25),
       ),
       child: Center(
         child: Text(
           text,
-          style: Theme.of(context).textTheme.titleSmall,
+          style: style,
         ),
       ),
     );
